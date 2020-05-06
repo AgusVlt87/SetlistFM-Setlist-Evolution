@@ -15,17 +15,17 @@ Use `setlistfm.py` to scrape an artists setlists into a JSON file. You'll need t
 
     python setlistfm.py https://www.setlist.fm/setlists/deftones-1bd689cc.html
     
-This will store all setlists from Deftones in a file called `deftones.json`. All sets will be stored in reversed chronological order (newer ones first).
+This will store all setlists by Deftones in a file called `deftones.json`. All sets will be stored in reversed chronological order (newer ones first).
 
 ### Plotting Graphs
 
-Use `plot.py` to plot graph animations of a setlist file (deftones.json for example). You can use the `--help` command to see a list of all parameters that can be provided.
+Use `plot.py` to plot graph animations of a setlist file (deftones.json for example). You can use the `--help` command to see a list of all parameters that can be used.
 
 A basic program call could look like this:
 
     python plot.py deftones.json
     
-I would however advice to make use of the `--mp n` option to specify mutliprocessor use (even `--mp 1` is faster for weird reasons).
+I would however advise to make use of the `--mp n` option to specify mutliprocessor use (even `--mp 1` is faster for weird reasons).
 Also using `--fps 30` f.e. will make for a smoother animation as it will calculate interpolation frames between the setlists.
 
 The command call I used for [the animation I posted on reddit](https://www.reddit.com/r/deftones/comments/geil9d/deftones_setlist_evolution_according_to_setlistfm/) was:
