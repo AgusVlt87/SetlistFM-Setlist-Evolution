@@ -36,4 +36,4 @@ The command call I used for [the animation I posted on reddit](https://www.reddi
 
 There's one more important thing that needs to be done if you want to plot for a band that is not one of the three provided as an example. You'll need to create a JSON file with the name of the band in the `album_data` folder. The file will contain info about the band's albums with the songs being listed and the color you want it to have in the graph. See the JSON files that are already there for examples.
 
-Oh, and the song names do not have to be 100% perfect, all characters that are not standard english symbols or numbers will be ignored for the string matching. BUT the rest needs to match perfectly of course. Just look up the spelling the songs have in the setlists file.
+The song names do not have to be 100% perfect, all characters that are not standard english symbols or numbers will be ignored for the string matching. But aside from that it needs to match perfectly. Just look up the spelling the songs have in the setlists file.
