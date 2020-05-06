@@ -1,0 +1,74 @@
+{
+	"artist": "Paramore",
+	"albums": [
+		{
+			"title": "All We Know Is Falling",
+			"year": 2005,
+			"tracks": [
+				"All We Know", "Pressure", "Emergency", "Brighter", "Here We Go Again", "Never Let This Go", "Whoa", "Conspiracy",
+				"Franklin", "My Heart"
+			],
+			"color": "red"
+		},
+		{
+			"title": "The Summer Tic EP",
+			"year": 2006,
+			"tracks": [
+				"Emergency (Alt. Version)", "O Star", "Stuck On You", "This Circle"
+			],
+			"color": "lightblue"
+		},
+		{
+			"title": "Riot!",
+			"year": 2007,
+			"tracks": [
+				"For a Pessimist, I'm Pretty Optimistic", "That's What You Get", "Hallelujah", "Misery Business", "When It Rains",
+				"Let the Flames Begin", "Miracle", "Crushcrushcrush", "We Are Broken", "Fences", "Born for This"
+			],
+			"bsides": [
+				"Decoy", "Temporary", "Stop This Song", "Rewind"
+			],
+			"color": "darkorange"
+		},
+		{
+			"title": "Brand New Eyes",
+			"year": 2009,
+			"tracks": [
+				"Careful", "Ignorance", "Playing God", "Brick By Boring Brick", "Turn It Off", "The Only Exception", "Feeling Sorry",
+				"Looking Up", "Where the Lines Overlap", "Misguided Ghosts", "All I Wanted"
+			],
+			"bsides": [
+				"Decode"
+			],
+			"color": "yellow"
+		},
+		{
+			"title": "Singles Club",
+			"year": 2011,
+			"tracks": ["Monster", "Renegade", "Hello Cold World", "In the Mourning"],
+			"color": "gray"
+		},
+		{
+			"title": "Paramore",
+			"year": 2013,
+			"tracks": [
+				"Fast in My Car", "Now", "Grow Up", "Daydreaming", "Interlude: Moving On", "Ain't It Fun", "Part II", "Last Hope",
+				"Still Into You", "Anklebiters", "Interlude: Holiday", "Proof", "Hate to See Your Heart Break", "(One of Those) Crazy Girls",
+				"Interlude: I'm Not Angry Anymore", "Be Alone", "Future"
+			],
+			"bsides": [
+				"Escape Route", "Native Tongue"
+			],
+			"color": "black"
+		},
+		{
+			"title": "After Laughter",
+			"year": 2017,
+			"tracks": [
+				"Hard Times", "Rose-Colored Boy", "Told You So", "Forgiveness", "Fake Happy", "26", "Pool", "Grudges", "Caught in the Middle",
+				"Idle Worship", "No Friend", "Tell Me How"
+			],
+			"color": "plum"
+		}
+	]
+}

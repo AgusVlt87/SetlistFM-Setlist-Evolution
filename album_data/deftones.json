@@ -1,0 +1,102 @@
+{
+	"artist": "Deftones",
+	"albums": [
+		{
+			"title": "Like Linus",
+			"year": 1991,
+			"tracks": [
+				"Like Linus", "Some People", "Answers", "Hump", "Christmas", "Plastic", "Venison", "Gift", "Freaks", "Teething"
+			],
+			"color": "rosybrown"
+		},
+		{
+			"title": "Adrenaline",
+			"year": 1995,
+			"tracks": [
+				"Bored", "Minus Blindfold", "One Weak", "Nosebleed", "Lifter", "Root", "7 Words", "Birthmark", "Engine No. 9",
+				"Fireal", "Fist"
+			],
+			"color": "thistle"
+		},
+		{
+			"title": "Around the Fur",
+			"year": 1997,
+			"tracks": [
+				"My Own Summer (Shove It)", "Lhabia", "Mascara", "Around the Fur", "Rickets", "Be Quiet and Drive (Far Away)",
+				"Lotion", "Dai the Flu", "Headup", "MX", "Damone"
+			],
+			"color": "darkblue"
+		},
+		{
+			"title": "White Pony",
+			"year": 2000,
+			"tracks": [
+				"Feiticeira", "Digital Bath", "Elite", "Rx Queen", "Street Carp", "Teenager", "Knife Prty", "Korea", "Passenger",
+				"Change (In the House of Flies)", "Pink Maggit"
+			],
+			"bsides": [
+				"The Boy's Republic", "Back to School (Mini Maggit)"
+			],
+			"color": "gray"
+		},
+		{
+			"title": "Deftones",
+			"year": 2003,
+			"tracks": [
+				"Hexagram", "Needles and Pins", "Minerva", "Good Morning Beautiful", "Deathblow", "When Girls Telephone Boys",
+				"Battle-axe", "Lucky You", "Bloody Cape", "Anniversary of an Uninteresting Event", "Moana"
+			],
+			"bsides": [
+				"Lovers"
+			],
+			"color": "black"
+		},
+		{
+			"title": "Saturday Night Wrist",
+			"year": 2006,
+			"tracks": [
+				"Hole in the Earth", "Rapture", "Beware", "Cherry Waves", "Mein", "U,U,D,D,L,R,L,R,A,B,Select,Start", "Xerces",
+				"Rats!Rats!Rats!", "Pink Cellphone", "Combat", "Kimdracula", "Rivière"
+			],
+			"bsides": [
+				"Drive"
+			],
+			"color": "mediumseagreen"
+		},
+		{
+			"title": "Eros",
+			"year": 2009,
+			"tracks": [
+				"Dallas", "Destiny", "Melanie", "Trempest", "Smile"
+			],
+			"color": "gold"
+		},
+		{
+			"title": "Diamond Eyes",
+			"year": 2010,
+			"tracks": [
+				"Diamond Eyes", "Royal", "CMND/CTRL", "You've Seen the Butcher", "Beauty School", "Prince", "Rocket Skates", "Sextape",
+				"Risk", "976-EVIL", "This Place Is Death"
+			],
+			"color": "lavender"
+		},
+		{
+			"title": "Koi No Yokan",
+			"year": 2012,
+			"tracks": [
+				"Swerve City", "Romantic Dreams", "Leathers", "Poltergeist", "Entombed", "Graphic Nature", "Tempest", "Gauze", "Rosemary",
+				"Goon Squad", "What Happened To You?"
+			],
+			"color": "red"
+		},
+		{
+			"title": "Gore",
+			"year": 2016,
+			"tracks": [
+				"Prayers/Triangles", "Acid Hologram", "Doomed User", "Geometric Headdress", "Hearts/Wires", "Pittura Infamante", "Xenon",
+				"(L)MIRL", "Gore", "Phantom Bride", "Rubicon"
+			],
+			"color": "pink"
+		}
+	]
+}
