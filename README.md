@@ -5,7 +5,7 @@ Plots graph animations showcasing setlist evolutions of bands with data parsed f
 
 ## How to use
 
-First of all you need to make sure you have `Python 3` and `ffmpeg` installed with both being in your **system path**. Also you'll need to install a few Python libraries via `pip` namely `matplotlib`, `celluloid` and `beautifulsoup4`.
+First of all you need to make sure you have `Python 3` and `ffmpeg` installed with both being in your **system path**. Also you'll need to install a few Python libraries via `pip` namely `numpy`, `matplotlib`, `celluloid` and `beautifulsoup4`.
 
 There are two scripts that are used in this project. The first one does the parsing from setlist.fm the second one does all the plotting and animation work.
 
