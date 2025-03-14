@@ -38,7 +38,7 @@ def main(args):
 		
 	artistdata = dict()
 	
-	with open(path + "/album_data/" + "Los Piojos" + ".json", "r") as file:
+	with open(path + "/album_data/" + artist + ".json", "r") as file:
 		artistdata = json.loads(file.read())
 	
 	start = max(args.start, 0)
@@ -270,7 +270,7 @@ def plot(fig, songvals, artistdata, artistdata_cleaned, camera, albums=None):
 	fig.axes[0].set_xticks(xticks)
 	fig.axes[0].set_xticklabels([a["title"] for a in artistdata["albums"]])
 	
-	if artistdata["artist"] == "Paramore":
+	if artistdata["artist"] == "Los Piojos":
 		for i in [1,4]:
 			fig.axes[0].xaxis.get_majorticklabels()[i].set_y(-.04)
 	elif artistdata["artist"] == "Deftones":
