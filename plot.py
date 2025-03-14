@@ -38,7 +38,7 @@ def main(args):
 		
 	artistdata = dict()
 	
-	with open(path + "/album_data/" + artist + ".json", "r") as file:
+	with open(path + "/album_data/" + "Los Piojos" + ".json", "r") as file:
 		artistdata = json.loads(file.read())
 	
 	start = max(args.start, 0)
