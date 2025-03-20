@@ -1,0 +1,34 @@
+
+# Crear gráfico
+fig = px.bar(
+    df_top,
+    y="canción",
+    x="veces_tocada",
+    animation_frame="fecha",
+    color="álbum",
+    orientation= 'h',
+    color_discrete_map= colores_album,
+    title="Progreso en el tiempo: Canciones tocadas en vivo por Los Piojos",
+    labels={"veces_tocada": "Veces Tocada", "canción": "Canción"}
+)
+
+# Aumentamos el tamaño del gráfico
+fig.update_layout(
+    width=1800,  # Más ancho
+    height=1200,  # Más alto para que las barras sean más gruesas
+    font=dict(family="los piojos", size=16, color="black"),
+    title_font=dict(size=24, color="black"),
+    xaxis=dict(title="Veces Tocada", gridcolor="gray"),
+    yaxis=dict(title="Canción", categoryorder="total ascending"),
+    margin=dict(l=200, r=50, t=70, b=50),
+    bargap=0.7,  # Ajuste del grosor de las barras
+)
+
+# Hacer que el eje X crezca dinámicamente con una transición más suave
+fig.update_layout(
+    xaxis=dict(range=[0, df_final["veces_tocada"].max() * 1.1])
+)
+
+# Hacer que las barras se resalten más
+
+fig.show()

@@ -120,9 +120,8 @@ def main(args):
                     sv = interpolateSongvals(lastvals, songvals, j, interpFrames + 1)
                     plot(fig, sv, artistdata, artistdata_cleaned, camera)
 
-                    fig.axes[0].text(0.2, 1.02, "Average data of the last " + str(args.numprobes) +
-                                     " shows until " + str(setlist["year"]) + "." + str(setlist["month"]).zfill(2) +
-                                     "." + str(setlist["day"]).zfill(2), transform=fig.axes[0].transAxes)
+                    fig.axes[0].text(0.2, 1.02, "Promedio de los" + " " + str(args.numprobes) +
+                                     " shows desde el 21.09.1991", transform=fig.axes[0].transAxes)
 
                     fig.tight_layout()
 
@@ -173,6 +172,11 @@ def interpolateSongvals(lastVals, vals, ind, interpFrames):
     return sv
 
 def plot(fig, songvals, artistdata, artistdata_cleaned, camera, albums=None):
+    # Primero, limpiamos el eje para evitar que se superpongan
+    # elementos de fotogramas previos.
+    ax = fig.axes[0]
+    ax.clear()
+
     width = 1
     pad = 1
 
@@ -195,7 +199,8 @@ def plot(fig, songvals, artistdata, artistdata_cleaned, camera, albums=None):
     i = 0
     j = 0
     for album in artistdata_cleaned["albums"]:
-        if albums == None or album["title"] in albums:
+        # Si 'albums' es None, plotea todos los álbumes
+        if albums is None or album["title"] in albums:
             setBars(album["tracks"], j, i, id, songvals, width, pad, album, False)
             j += len(album["tracks"])
 
@@ -205,21 +210,29 @@ def plot(fig, songvals, artistdata, artistdata_cleaned, camera, albums=None):
             i += 1
         id += 1
 
-    fig.axes[0].set_xticks(xticks)
-    fig.axes[0].set_xticklabels([a["title"] for a in artistdata["albums"]])
+    # Configuramos los ejes
+    ax.set_xticks(xticks)
+    ax.set_xticklabels([a["title"] for a in artistdata["albums"]])
+    ax.set_yticks([])
 
+    # Ajustes específicos según el artista
     if artistdata["artist"] == "Los Piojos":
-        for i in [1, 4]:
-            fig.axes[0].xaxis.get_majorticklabels()[i].set_y(-.04)
+        for i in [1, 6]:
+            ax.xaxis.get_majorticklabels()[i].set_y(-.04)
     elif artistdata["artist"] == "Deftones":
-        fig.axes[0].xaxis.get_majorticklabels()[6].set_y(-.04)
+        ax.xaxis.get_majorticklabels()[6].set_y(-.04)
+
+    # Título (puedes ajustar el texto según necesites)
+    ax.set_title("Promedio de los shows desde el 21.09.1991")
 
     fig.axes[0].set_yticks([])
 
+
 def setBars(songs, j, i, albumNr, songvals, width, pad, albumdata, bsides):
+    # Obtener el color del álbum
     color = "red"
     if "color" in albumdata.keys():
-        color = albumdata["color"]
+        color = albumdata["color"]  # Tomamos el color del álbum desde el JSON
     elif len(albumcolors) > albumNr:
         color = albumcolors[albumNr]
 
@@ -229,6 +242,7 @@ def setBars(songs, j, i, albumNr, songvals, width, pad, albumdata, bsides):
     pos = [(n + j) * width + pad * i for n in range(len(songs))]
     vals = [songvals[sng] for sng in songs]
 
+    # Graficar las barras con el color asignado
     plt.bar(pos, vals, width, edgecolor=edgecolor, linewidth=0.5, color=color, alpha=alpha)
 
 def cleanTitle(s):
@@ -239,16 +253,17 @@ def cleanTitle(s):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("setlistfile", metavar="infile", type=str, help="The input setlist file in json format.")
-    parser.add_argument("-o", "--out", type=str, help="The output plot file.")
-    parser.add_argument("-n", "--numprobes", type=int, default=-1, help="Number of setlists/days to collect for the averaging.")
-    parser.add_argument("-m", "--mode", type=int, default=0, help="0 for setlist-probes (default), 1 for day-probes")
-    parser.add_argument("--interval", type=int, default=150, help="Milliseconds each graph is displayed.")
-    parser.add_argument("--fps", type=int, default=-1, help="Interpolate to fps.")
-    parser.add_argument("-s", "--start", type=int, default=0, help="Index of setlist to start on (data from prev setlists for numprobes will be taken into account).")
-    parser.add_argument("-e", "--end", type=int, default=-1, help="Index of last setlist to include (inclusive).")
-    parser.add_argument("--mp", type=int, default=0, help="Use multiprocessing.")
-    parser.add_argument("-q", "--quiet", action="store_true", help="Don't display progress.")
+    parser.add_argument("setlistfile", metavar="infile", type=str, help="El archivo de entrada de setlist en formato JSON.")
+    parser.add_argument("-o", "--out", type=str, help="El archivo de salida del gráfico.")
+    parser.add_argument("-n", "--numprobes", type=int, default=-1, help="Número de setlists/días para recolectar para el promedio.")
+    parser.add_argument("-m", "--mode", type=int, default=0, help="0 para setlist-probes (por defecto), 1 para day-probes")
+    parser.add_argument("--interval", type=int, default=150, help="Milisegundos que se muestra cada gráfico.")
+    parser.add_argument("--fps", type=int, default=-1, help="Interpolar a fps.")
+    parser.add_argument("-s", "--start", type=int, default=0, help="Índice del setlist por el que comenzar (se tomará en cuenta los datos de los setlists anteriores para numprobes).")
+    parser.add_argument("-e", "--end", type=int, default=-1, help="Índice del último setlist a incluir (inclusive).")
+    parser.add_argument("--mp", type=int, default=0, help="Usar procesamiento paralelo.")
+    parser.add_argument("-q", "--quiet", action="store_true", help="No mostrar progreso.")
+
 
     args = parser.parse_args()
 
