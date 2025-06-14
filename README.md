@@ -1,39 +1,70 @@
-# SetlistFM-Setlist-Evolution
-Plots graph animations showcasing setlist evolutions of bands with data parsed from setlist.fm
+# SetlistFM - Setlist Evolution: Análisis de Los Piojos
 
-![alt tag](https://github.com/Deconimus/SetlistFM-Setlist-Evolution/blob/master/pic.png)
+Este proyecto analiza la evolución de los setlists de Los Piojos a lo largo de su carrera, combinando información de conciertos, popularidad de canciones, reproducciones en plataformas y visualizaciones avanzadas.
 
-## How to use
+## Estructura del Proyecto
 
-First of all you need to make sure you have `Python 3` and `ffmpeg` installed with both being in your **system path**. Also you'll need to install a few Python libraries via `pip`. Namely `numpy`, `matplotlib`, `celluloid` and `beautifulsoup4`.
+- **notebook_piojos.ipynb**: Análisis principal de la evolución de las canciones más tocadas, animaciones y visualizaciones de barras.
+- **popularidad.ipynb**: Cálculo de un índice de popularidad para cada canción, combinando datos de Spotify, YouTube, ventas y frecuencia en vivo.
+- **setlists_populares.ipynb**: Análisis de los recitales más "mainstream" y alternativos, exploración de variables que predicen la popularidad de un show, visualizaciones de ciudades y mapas.
+- **vuelta_popularidad.ipynb**: Análisis específico de la "vuelta" de Los Piojos y su impacto en los setlists.
+- **plot.py**: Script para generar animaciones y visualizaciones de la evolución de los temas.
+- **album_data/Los Piojos.json**: Información de álbumes, canciones y colores asociados.
+- **Setlists_Piojos.json / setlists_vuelta.json**: Datos de los setlists históricos y de la vuelta.
+- **excels/**: Archivos exportados con resultados de popularidad y ordenamientos.
+- **videos_piojos/**: Imágenes y gifs generados para visualizaciones y presentaciones.
 
-There are two scripts that are used in this project. The first one does the parsing from setlist.fm the second one does all the plotting and animation work.
+## Principales Análisis y Visualizaciones
 
-### Scraping Artist Setlists
+### 1. Evolución de Canciones en Vivo
+- Se procesaron todos los setlists históricos para contar acumulativamente cuántas veces se tocó cada canción.
+- Se generaron animaciones de barras mostrando el top 27 de canciones más tocadas a lo largo del tiempo, con colores por álbum.
 
-Use `setlistfm.py` to scrape an artists setlists into a JSON file. You'll need to provide a URL to an **artist page** (important) for it to work properly. Here's an example:
+### 2. Índice de Popularidad de Canciones
+- Se creó un índice combinando:
+  - Veces tocada por año de vigencia
+  - Popularidad en Spotify
+  - Reproducciones en YouTube
+  - Streams totales en Spotify
+  - Ventas del álbum
+- Se usó PCA para ponderar las variables y se normalizó el índice entre 0 y 1.
+- Resultados exportados a `canciones_popularidad.xlsx`.
 
-    python setlistfm.py https://www.setlist.fm/setlists/deftones-1bd689cc.html
-    
-This will store all setlists by Deftones in a file called `deftones.json`. All sets will be stored in reversed chronological order (newer ones first).
+### 3. Análisis de Recitales y Setlists Populares
+- Se calculó la popularidad promedio de cada recital según las canciones tocadas.
+- Se identificaron los shows más "mainstream" y alternativos.
+- Se analizaron variables como aforo, ciudad, estación, cantidad de canciones y día de la semana para predecir la popularidad de un show.
+- Se entrenó un modelo de Random Forest para predecir la popularidad de futuros recitales.
 
-### Plotting Graphs
+### 4. Visualizaciones Avanzadas
+- Mapas de calor de popularidad por ciudad y año.
+- Mapas interactivos de proporción de "hits" tocados por ciudad.
+- Wordcloud de canciones más tocadas, coloreadas por álbum y con forma personalizada.
+- Sankey diagram mostrando la incorporación de canciones nuevas por año.
 
-Use `plot.py` to plot graph animations of a setlist file (deftones.json for example). You can use the `--help` command to see a list of all parameters that can be used.
+### 5. Otros Análisis
+- Detección de "hits" (top 25% más populares) y su frecuencia por ciudad.
+- Análisis de la posición promedio de las canciones en los setlists más populares.
+- Exportación de resultados a archivos Excel para su consulta y visualización externa.
 
-A basic program call could look like this:
+## Requisitos
 
-    python plot.py deftones.json
-    
-I would however advise to make use of the `--mp n` option to specify mutliprocessor use (even `--mp 1` is faster for weird reasons).
-Also using `--fps 30` f.e. will make for a smoother animation as it will calculate interpolation frames between the setlists.
+- Python 3.8+
+- Jupyter Notebook
+- Bibliotecas: pandas, numpy, matplotlib, seaborn, plotly, scikit-learn, spotipy, yt-dlp, wordcloud, pillow
 
-The command call I used for [the animation I posted on reddit](https://www.reddit.com/r/deftones/comments/geil9d/deftones_setlist_evolution_according_to_setlistfm/) was:
+## Ejecución
 
-    python plot.py deftones.json --fps 30 --mp 4
-    
-#### Plotting other artists
+1. Abrir los notebooks en Jupyter o VSCode.
+2. Ejecutar las celdas en orden para reproducir los análisis y visualizaciones.
+3. Los resultados principales se exportan a la carpeta `excels/` y las visualizaciones a `videos_piojos/`.
 
-There's one more important thing that needs to be done if you want to plot for a band that is not one of the three provided as an example. You'll need to create a JSON file with the name of the band in the `album_data` folder. The file will contain info about the band's albums with the songs being listed and the color you want it to have in the graph. See the JSON files that are already there for examples.
+## Créditos
 
-The song names do not have to be 100% perfect, all characters that are not standard english symbols or numbers will be ignored for the string matching. But aside from that it needs to match perfectly. Just look up the spelling the songs have in the setlists file.
+- Datos de setlists: [Setlist.fm](https://www.setlist.fm/)
+- Datos de álbumes: Discografía oficial de Los Piojos
+- Análisis y visualizaciones: [Tu nombre o equipo]
+
+---
+
+Este proyecto es un ejemplo de análisis de datos musicales, combinando fuentes diversas y técnicas de ciencia de datos para entender la evolución de una banda
